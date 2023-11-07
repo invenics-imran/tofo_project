@@ -15,8 +15,6 @@ def write_todos(todos_arg, filepath="todos.txt"):
       with open(filepath,'w') as file_whatever:
             file_whatever.writelines(todos_arg)
 
-
-
 # Now this will get printed if we call in this function 
 # But if we call in the other function wher this two lin is ther it wont be printed
 # 
