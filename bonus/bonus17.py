@@ -11,9 +11,11 @@ input2=sg.InputText()
 choose_button2=sg.FolderBrowse("choose", key="folder")
 
 compress_button=sg.Button("Compress")
+output_label=sg.Text(key="output", text_color="green")
+
 window=sg.Window("files compressor", layout=[[label1,input1,choose_button1],
                                              [label2,input2,choose_button2],
-                                             [compress_button]])
+                                             [compress_button,output_label]])
 
 # Compress
 # {0: 'C:/Users/ImranSajawal/proj/my_project/app1/trial/a.txt;C:/Users/ImranSajawal/proj/my_project/app1/trial/b.txt', 'choose': 'C:/Users/ImranSajawal/proj/my_project/app1/trial/a.txt;C:/Users/ImranSajawal/proj/my_project/app1/trial/b.txt', 1: 'C:/Users/ImranSajawal/proj/my_project/app1/trial', 'choose0': 'C:/Users/ImranSajawal/proj/my_project/app1/trial'}
@@ -26,7 +28,12 @@ while True:
         print(values)
         filepaths=values["files"].split(';')
         folderpath=values["folder"]
+        # print(values["files"])
+        # print(values["folder"])
+        print(filepaths)
         make_archive(filepaths,folderpath)
+        window["output"].update(value="comression completed")
+
 
 
 window.close()
